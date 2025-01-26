@@ -1,0 +1,138 @@
+{
+    "damage_level['minor']": [
+        {
+            "conditions": "self.crack_width['small'] & self.foundation_stability['high']",
+            "inputs": ["crack_width", "foundation_stability"]
+        },
+        {
+            "conditions": "self.damage_probability['minor']",
+            "inputs": ["damage_probability"]
+        },
+        {
+            "conditions": "self.time_since_damage['recent'] & self.time_since_damage['long']",
+            "inputs": ["time_since_damage"]
+        },
+        {
+            "conditions": "self.safe_zone_distance['near'] & self.safe_zone_distance['far']",
+            "inputs": ["safe_zone_distance"]
+        },
+        {
+            "conditions": "self.num_adj_buildings['low'] & self.num_adj_buildings['high']",
+            "inputs": ["num_adj_buildings"]
+        },
+        {
+            "conditions": "self.env_impact['low'] & self.env_impact['high']",
+            "inputs": ["env_impact"]
+        },
+        {
+            "conditions": "self.prob_inaccessibility['low'] & self.prob_inaccessibility['high']",
+            "inputs": ["prob_inaccessibility"]
+        },
+        {
+            "conditions": "self.prob_UXO['low'] & self.prob_UXO['high']",
+            "inputs": ["prob_UXO"]
+        },
+        {
+            "conditions": "self.hazard_probability['low'] & self.hazard_probability['high']",
+            "inputs": ["hazard_probability"]
+        }
+    ],
+    "damage_level['moderate']": [
+        {
+            "conditions": "self.prob_foundational_damage['medium'] | self.prob_foundational_damage['high']",
+            "inputs": ["prob_foundational_damage"]
+        },
+        {
+            "conditions": "self.partial_wall_collapse['true'] & self.foundation_stability['high']",
+            "inputs": ["partial_wall_collapse", "foundation_stability"]
+        },
+        {
+            "conditions": "self.prob_structural_tilt['high']",
+            "inputs": ["prob_structural_tilt"]
+        },
+        {
+            "conditions": "self.damage_probability['moderate']",
+            "inputs": ["damage_probability"]
+        }
+    ],
+    "damage_level['severe']": [
+        {
+            "conditions": "self.structural_tilt['high'] | self.foundation_stability['low']",
+            "inputs": ["structural_tilt", "foundation_stability"]
+        },
+        {
+            "conditions": "self.damage_probability['severe']",
+            "inputs": ["damage_probability"]
+        }
+    ],
+    "damage_level['irreparable']": [
+        {
+            "conditions": "self.prob_structural_failure['high']",
+            "inputs": ["prob_structural_failure"]
+        },
+        {
+            "conditions": "self.debris_load['high'] & self.crack_width['large']",
+            "inputs": ["debris_load", "crack_width"]
+        },
+        {
+            "conditions": "self.damage_probability['irreparable']",
+            "inputs": ["damage_probability"]
+        }
+    ],
+    "priority_level['high']": [
+        {
+            "conditions": "self.building_type['hospital'] & self.pop_density['high']",
+            "inputs": ["building_type", "pop_density"]
+        },
+        {
+            "conditions": "(self.pop_density['medium'] | self.pop_density['high']) & self.evacuation_routes['limited'] & (self.building_type['hospital'] | self.building_type['school'])",
+            "inputs": ["pop_density", "evacuation_routes", "building_type"]
+        },
+        {
+            "conditions": "self.building_type['school'] & self.school_proximity['near'] & (self.pop_density['medium'] | self.pop_density['high'])",
+            "inputs": ["building_type", "school_proximity", "pop_density"]
+        }
+    ],
+    "priority_level['medium']": [
+        {
+            "conditions": "self.pop_density['medium'] & self.building_type['residential']",
+            "inputs": ["pop_density", "building_type"]
+        }
+    ],
+    "risk_level['high']": [
+        {
+            "conditions": "self.uxo_confidence['high']",
+            "inputs": ["uxo_confidence"]
+        },
+        {
+            "conditions": "self.blockage_prob['high']",
+            "inputs": ["blockage_prob"]
+        },
+        {
+            "conditions": "self.fragility_index['high']",
+            "inputs": ["fragility_index"]
+        }
+    ],
+    "risk_level['medium']": [
+        {
+            "conditions": "self.debris_distance['near']",
+            "inputs": ["debris_distance"]
+        }
+    ],
+    "resource_allocation['low']": [
+        {
+            "conditions": "self.damage_level['minor'] & self.priority_level['medium']",
+            "inputs": ["damage_level", "priority_level"]
+        }
+    ],
+    "resource_allocation['high']": [
+        {
+            "conditions": "self.damage_level['severe'] & self.building_type['hospital']",
+            "inputs": ["damage_level", "building_type"]
+        },
+        {
+            "conditions": "self.damage_level['severe'] & self.building_type['school']",
+            "inputs": ["damage_level", "building_type"]
+        }
+    ]
+}
