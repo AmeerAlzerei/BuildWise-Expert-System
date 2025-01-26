@@ -1,0 +1,128 @@
+{
+  "damage_classification_rules": [
+    {
+      "conditions": "self.crack_width['small'] & self.foundation_stability['high']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.prob_foundational_damage['medium'] | self.prob_foundational_damage['high']",
+      "action": "self.damage_level['moderate']"
+    },
+    {
+      "conditions": "self.partial_wall_collapse['true'] & self.foundation_stability['high']",
+      "action": "self.damage_level['moderate']"
+    },
+    {
+      "conditions": "self.prob_structural_tilt['high']",
+      "action": "self.damage_level['moderate']"
+    },
+    {
+      "conditions": "self.structural_tilt['high'] | self.foundation_stability['low']",
+      "action": "self.damage_level['severe']"
+    },
+    {
+      "conditions": "self.prob_structural_failure['high']",
+      "action": "self.damage_level['irreparable']"
+    },
+    {
+      "conditions": "self.debris_load['high'] & self.crack_width['large']",
+      "action": "self.damage_level['irreparable']"
+    },
+    {
+      "conditions": "self.damage_probability['minor']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.damage_probability['moderate']",
+      "action": "self.damage_level['moderate']"
+    },
+    {
+      "conditions": "self.damage_probability['severe']",
+      "action": "self.damage_level['severe']"
+    },
+    {
+      "conditions": "self.damage_probability['irreparable']",
+      "action": "self.damage_level['irreparable']"
+    }
+  ],
+  "priority_recommendation_rules": [
+    {
+      "conditions": "self.building_type['hospital'] & self.pop_density['high']",
+      "action": "self.priority_level['high']"
+    },
+    {
+      "conditions": "self.pop_density['medium'] & self.building_type['residential']",
+      "action": "self.priority_level['medium']"
+    },
+    {
+      "conditions": "(self.pop_density['medium'] | self.pop_density['high']) & self.evacuation_routes['limited'] & (self.building_type['hospital'] | self.building_type['school'])",
+      "action": "self.priority_level['high']"
+    },
+    {
+      "conditions": "self.building_type['school'] & self.school_proximity['near'] & (self.pop_density['medium'] | self.pop_density['high'])",
+      "action": "self.priority_level['high']"
+    }
+  ],
+  "risk_identification_rules": [
+    {
+      "conditions": "self.uxo_confidence['high']",
+      "action": "self.risk_level['high']"
+    },
+    {
+      "conditions": "self.blockage_prob['high']",
+      "action": "self.risk_level['high']"
+    },
+    {
+      "conditions": "self.debris_distance['near']",
+      "action": "self.risk_level['medium']"
+    },
+    {
+      "conditions": "self.fragility_index['high']",
+      "action": "self.risk_level['high']"
+    }
+  ],
+  "resource_allocation_rules": [
+    {
+      "conditions": "self.damage_level['minor'] & self.priority_level['medium']",
+      "action": "self.resource_allocation['low']"
+    },
+    {
+      "conditions": "self.damage_level['severe'] & self.building_type['hospital']",
+      "action": "self.resource_allocation['high']"
+    },
+    {
+      "conditions": "self.damage_level['severe'] & self.building_type['school']",
+      "action": "self.resource_allocation['high']"
+    }
+  ],
+  "dummy_rules": [
+    {
+      "conditions": "self.time_since_damage['recent'] & self.time_since_damage['long']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.safe_zone_distance['near'] & self.safe_zone_distance['far']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.num_adj_buildings['low'] & self.num_adj_buildings['high']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.env_impact['low'] & self.env_impact['high']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.prob_inaccessibility['low'] & self.prob_inaccessibility['high']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.prob_UXO['low'] & self.prob_UXO['high']",
+      "action": "self.damage_level['minor']"
+    },
+    {
+      "conditions": "self.hazard_probability['low'] & self.hazard_probability['high']",
+      "action": "self.damage_level['minor']"
+    }  
+  ]
+}
